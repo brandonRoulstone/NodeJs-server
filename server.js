@@ -8,7 +8,7 @@ import userRoute from './Routes/UserRoute.js'
 
 
 const app = express(); 
-const PORT_NO = process.env.PORT;
+const PORT_NO = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
