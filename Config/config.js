@@ -3,10 +3,12 @@ import { config } from 'dotenv';
 config();
 
 const pool = mysql.createPool({
-    host: process.env.HOST_NAME,
-    user: process.env.USER,
-    password: process.env.PWD,
-    database: process.env.DATABASE
+    host: process.env.DB_HOST,
+    database: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_USERPASS,
+    multipleStatements: true,
+    connectionLimit: 30
 }).promise()
 
 export { pool };
