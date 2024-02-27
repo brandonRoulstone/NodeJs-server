@@ -9,11 +9,7 @@ const hashUserPassword = (req, res, next) =>  {
 
         if(err) throw err
 
-        await addUser(firstName, lastName, userAge, Gender, userRole, emailAdd, hashpwd, userProfile)
-
-        res.send({
-            msg: "account has been created"
-        });
+        await addUser(firstName, lastName, userAge, Gender, userRole, emailAdd, hashpwd, userProfile) 
         
     });
 

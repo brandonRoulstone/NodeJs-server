@@ -5,55 +5,105 @@ export default {
 
     allUsers : async (req, res) => {
 
-        res.send(await getUsers())
+        try {
+            res.send(await getUsers(req.params.firstName))
+        } catch (error) {
+
+            res.json({
+                status : statusCode,
+                msg: `failed to fetch ${req.url}`
+            })
+            
+        }
         
     },
 
     singleUser : async (req, res) => {
 
-        res.send(await getUser(+req.params.id))
+        try {
+            res.send(await getUser(+req.params.id))
+        } catch (err) {
+
+            res.json({
+                status : statusCode,
+                msg: `failed to fetch ${req.url}`
+            })
+
+        }
 
     },
 
     addUserToDB : async (req, res) => {
+        try {
+            
+            const {firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile} = req.body;
 
-        const {firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile} = req.body;
+            await addUser(firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile);
+            
+            res.send(await getUsers())
 
-        await addUser(firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile);
-        
-        res.send(await getUsers())
+        } catch (error) {
+            
+            res.json({
+                status : statusCode,
+                msg: `failed to fetch ${req.url}`
+            })
+
+        }
     },
 
     deletUuserByID : async (req, res) => {
+        try {
+            await deleteUser(+req.params.id)
 
-        await deleteUser(+req.params.id)
+            res.send(await getUsers())
+        } catch (error) {
+            
+            res.json({
+                status : statusCode,
+                msg: `failed to fetch ${req.url}`
+            })
 
-        res.send(await getUsers())
+        }
     },
     
     editUserByID : async (req, res) => {
-
-        const [user] = await getUser(+req.body.id)
-
-        let {firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile} = req.body;
-
-        firstName ? firstName : {firstName} = user
-
-        lastName ? lastName : {lastName} = user
-
-        userAge ? userAge : {userAge} = user
-
-        Gender ? Gender : {Gender} = user
+            
+        try {
+            
+            let {firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile} = req.body;
         
-        userRole ? userRole : {userRole} = user
+            const [user] = await getUser(+req.params.id)
+        
+            firstName ? firstName : {firstName} = user
+    
+            lastName ? lastName : {lastName} = user
+    
+            userAge ? userAge : {userAge} = user
+    
+            Gender ? Gender : {Gender} = user
+            
+            userRole ? userRole : {userRole} = user
+    
+            emailAdd ? emailAdd : {emailAdd} = user
+    
+            userPass ? userPass : {userPass} = user
+    
+            userProfile ? userProfile : {userProfile} = user
+    
+            await editUser(firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile, +req.params.id)
+    
+            res.send(await getUsers())
 
-        emailAdd ? emailAdd : {emailAdd} = user
+        } catch (error) {
 
-        userPass ? userPass : {userPass} = user
+            res.json({
+                status : statusCode,
+                msg: `failed to fetch ${req.url}`
+            })
+            
+        }
 
-        userProfile ? userProfile : {userProfile} = user
-
-        await editUser(firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile, +req.params.id)
 
     }
 }

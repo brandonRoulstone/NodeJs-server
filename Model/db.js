@@ -75,11 +75,11 @@ const deleteUser = async (id) => {
 }
 
 // edit a single users information
-const editUser = async (firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile,userID) => {
+const editUser = async (firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile, userID) => {
 
     const [user] = await pool.query(`
      UPDATE Users SET firstName = ?, lastName = ?, userAge = ?, Gender = ?, userRole = ?, emailAdd = ?, userPass = ?, userProfile = ? WHERE userID = ?
-    `, [firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile,userID])
+    `, [firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile, userID])
 
 }
 
