@@ -12,8 +12,13 @@ const getProducts = async () => {
 // Gets product by id
 const getProduct = async (id) => {
     const [product] = await pool.query(`
-        SELECT * FROM products WHERE prodID = ?
+    SELECT * FROM products WHERE prodID = ?
     `, [id]);
+    // handling error for finding the existing parameter in the array/database
+    if(!id || isNaN(id) || id > product){
+        
+        throw error();
+    }
 
     return product
 }
@@ -27,7 +32,7 @@ const editProduct = async (prodName, quantity, amount, Category, prodUrl, prodID
 
 // Add product to table
 const addProduct = async (prodName, quantity, amount, Category, prodUrl) => {
-    const [product ] = await pool.query(`
+    const [product] = await pool.query(`
         INSERT INTO products (prodName, quantity, amount, Category, prodUrl) VALUES (?, ?, ?, ?, ?)
     `, [prodName, quantity, amount, Category, prodUrl])
     return getProducts(product.insertId)
@@ -62,6 +67,12 @@ const getUser = async (id) => {
     const [user] = await pool.query(`
      SELECT * FROM Users WHERE userID = ?
     `,[id])
+
+    if (!id || isNaN(id) || id > user){
+
+        throw error()
+        
+    }
     return user
 }
 
@@ -91,5 +102,7 @@ const addUser = async (firstName, lastName, userAge, Gender, userRole, emailAdd,
 
     return getUsers(user.insertId)
 }
+
+
 
 export { getProducts, getProduct, addProduct, deleteProduct, editProduct, checkUser, getUsers, getUser, deleteUser, editUser, addUser }

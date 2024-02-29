@@ -9,9 +9,9 @@ export default {
             res.send(await getUsers(req.params.firstName))
         } catch (error) {
 
-            res.json({
-                status : statusCode,
-                msg: `failed to fetch ${req.url}`
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error while fetching users route"
             })
             
         }
@@ -24,9 +24,9 @@ export default {
             res.send(await getUser(+req.params.id))
         } catch (err) {
 
-            res.json({
-                status : statusCode,
-                msg: `failed to fetch ${req.url}`
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error occurred while fetching a single product"
             })
 
         }
@@ -44,9 +44,9 @@ export default {
 
         } catch (error) {
             
-            res.json({
-                status : statusCode,
-                msg: `failed to fetch ${req.url}`
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error while adding"
             })
 
         }
@@ -59,9 +59,9 @@ export default {
             res.send(await getUsers())
         } catch (error) {
             
-            res.json({
-                status : statusCode,
-                msg: `failed to fetch ${req.url}`
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error occurred while trying to delete"
             })
 
         }
@@ -97,9 +97,9 @@ export default {
 
         } catch (error) {
 
-            res.json({
-                status : statusCode,
-                msg: `failed to fetch ${req.url}`
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error occurred while trying to edit a product"
             })
             
         }

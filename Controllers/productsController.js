@@ -6,9 +6,9 @@ export default {
         try {
             res.send(await getProducts(req.body.prodName))
         } catch (err){
-            res.json({
-                status : res.statusCode,
-                msg: `failed to retrieve ${req.url}`
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error"
             })
         }
 
@@ -18,9 +18,9 @@ export default {
         try {
             res.send(await getProduct(+req.params.id))
         } catch (err) {
-            res.json({
-                status : res.statusCode,
-                msg: `failed to retrieve ${req.url}`
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error"
             })
         }
 
@@ -35,9 +35,9 @@ export default {
 
         } catch (err) {
             
-            res.json({
-                status : res.statusCode,
-                msg: `failed to retrieve ${req.url}`
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error"
             })
 
         }
@@ -54,9 +54,9 @@ export default {
             res.send(await getProducts())
 
         } catch (err) {
-            res.json({
-                status : statusCode,
-                msg: `failed to retrieve ${req.url}` 
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error"
             })
         }
     },
@@ -81,9 +81,9 @@ export default {
             res.send(await getProducts());
             
         } catch (err) {
-            res.json({
-                status : statusCode,
-                msg: `failed to retrieve ${req.url}`
+            console.error("Internal error")
+            res.status(404).json({
+                msg: "internal error"
             })
         }
     }  
