@@ -1,18 +1,10 @@
 <template>
     <div>
         <navigation/>
-        <a href="#addEdit">click here to add or edit
-          <details>
+       
+          
              
-              <div id="addEdit">
-          <input id="input" type="text" placeholder="productname" v-model="prodName">
-          <input id="input" type="number" placeholder="quantity" v-model="quantity">
-          <input id="input" type="number" placeholder="amount" v-model="amount">
-          <input id="input" type="text" placeholder="category" v-model="Category">
-          <input id="input" type="text" placeholder="img" v-model="prodUrl">
-          <button @click="addproducts()" id="btn">add</button>
-      </div>
-      <summary>
+    
                   <div class="table-responsive">
                       <div v-if="$store.state.admin.length !== 0">
                           <table class="table table-bordered table-hover table-dark">
@@ -45,9 +37,20 @@
                    <spinners/>
                       </div>
                   </div>
-              </summary>
-          </details>
-        </a>
+
+                  <div>
+                    add or edit here
+          <input id="input" type="text" placeholder="productname" v-model="prodName">
+          <input id="input" type="number" placeholder="quantity" v-model="quantity">
+          <input id="input" type="number" placeholder="amount" v-model="amount">
+          <input id="input" type="text" placeholder="category" v-model="Category">
+          <input id="input" type="text" placeholder="img" v-model="prodUrl">
+          <button @click="addproducts()" id="btn">add</button>
+      </div>
+  
+             
+       
+       
 
     </div>
     <footers/>
