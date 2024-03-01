@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { addUser } from '../Model/db.js';
+import { addUser, getUser, getUsers } from '../Model/db.js';
 
 const hashUserPassword = (req, res, next) =>  {
 
@@ -11,8 +11,10 @@ const hashUserPassword = (req, res, next) =>  {
 
         await addUser(firstName, lastName, userAge, Gender, userRole, emailAdd, hashpwd, userProfile) 
         
-    });
-
+        res.send(await getUsers())
+        
+    }); 
+    
     next();
 }
 

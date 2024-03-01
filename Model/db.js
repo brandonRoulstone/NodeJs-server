@@ -48,10 +48,11 @@ const deleteProduct = async (id) => {
 // admin verification
 const checkUser = async (emailAdd) => {
     const [[{userPass}]] = await pool.query(`
-    SELECT userPass FROM Users WHERE emailAdd = ?
-    `[emailAdd])
+    SELECT userPass FROM Users WHERE emailAdd = ?`,
+     [emailAdd]);
+     console.log(userPass);
     return userPass
-}
+} 
 
 // Gets all users in table
 const getUsers = async (id) => {

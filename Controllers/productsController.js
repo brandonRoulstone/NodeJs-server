@@ -58,7 +58,7 @@ export default {
             res.status(404).json({
                 msg: "internal error"
             })
-        }
+        } 
     },
     editProductByID : async (req, res) => {
         try {

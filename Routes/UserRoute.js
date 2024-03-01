@@ -13,7 +13,7 @@ routes.route('/')
 
 routes.route('/:id')
     .get(controller.singleUser)
-    .delete(controller.deletUuserByID)
+    .delete(controller.deletUuserByID)   
     .patch(controller.editUserByID)
 
 export default routes;

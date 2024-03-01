@@ -1,4 +1,4 @@
-import { getUsers, getUser, addUser, deleteUser, editUser } from '../Model/db.js'
+import { getUsers, getUser, addUser, deleteUser, checkUser, editUser } from '../Model/db.js'
 
 
 export default {
@@ -37,10 +37,8 @@ export default {
         try {
             
             const {firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile} = req.body;
-
-            await addUser(firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile);
             
-            res.send(await getUsers())
+            // res.send(await getUsers())
 
         } catch (error) {
             
