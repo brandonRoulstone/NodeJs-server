@@ -11,11 +11,8 @@ const hashUserPassword = (req, res, next) =>  {
 
         await addUser(firstName, lastName, userAge, Gender, userRole, emailAdd, hashpwd, userProfile) 
         
-        res.send(await getUsers())
-        
+        next();
     }); 
-    
-    next();
 }
 
 export default hashUserPassword;

@@ -36,9 +36,10 @@ export default {
     addUserToDB : async (req, res) => {
         try {
             
-            const {firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile} = req.body;
+            // const {firstName, lastName, userAge, Gender, userRole, emailAdd, userPass, userProfile} = req.body;
             
-            // res.send(await getUsers())
+            // 
+            res.send(await getUsers())
 
         } catch (error) {
             
