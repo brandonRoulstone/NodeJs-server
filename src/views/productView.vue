@@ -3,15 +3,15 @@
     <div class="container">
       <div class="d-flex" role="search">
         <input class="me-5 input" type="search" placeholder="Search by name or category" aria-label="Search" v-model="search" @change="searching()">
-     
+        <button @click="sortProducts()" >sort</button>
         
           </div>
     </div>
 
     <div v-if="$store.state.products.length !== 0">
-      <div class="container me-5">
+      <div class="container">
       <div class="row">
-          <div class="col-lg-4 pb-5" v-for="item,index in searching() " :key="item.prodID">
+          <div class="col-lg-4 pb-5 justify-content-center d-flex" v-for="item,index in searching() || sortProducts() " :key="item.prodID">
             <article class="cards">
       <div class="card-int">
           <span class="card__span">{{item.Category}}</span>
@@ -19,7 +19,7 @@
           <div class="card-data">
             <p class="title">{{ item.prodName }}
             </p>
-            <p :id="'c'+index" >{{ descriptions[index] }}</p>
+            <!-- <p :id="'c'+index" >{{ descriptions[index] }}</p> -->
             <p>R{{ item.amount }}</p>
             <router-link @click="getproduct(item.prodID)" :to="{ name: 'productDetails', params: { prodID: item.prodID }} " class="btn btn-dark">details</router-link>
       
@@ -69,21 +69,6 @@
         data() {
         
           return {
-            descriptions: [
-            `The JBL speaker combines compact design with powerful audio performance, making it a perfect portable companion for immersive sound on the go.`,
-            `The Volcano Bazooka unleashes explosive power with its cutting-edge design, propelling molten fury in a controlled burst to conquer any geological challenge.`,
-            `Beats headphones blend style and powerful audio, appealing to music lovers and fashion-conscious consumers with their sleek design and impressive sound quality.`,
-            `TXbox Series S: Compact, powerful console with high-quality graphics, smooth gameplay, and a digital-only game library.`,
-            'The PlayStation 5 offers an immersive gaming experience with powerful hardware, stunning graphics, and innovative features for enthusiasts.',
-            'The Razer gaming laptop offers top-notch performance, impressive visuals, and a sleek design for an immersive gaming experience.',
-            'Gaming laptop with powerful AMD Ryzen 7 cpu for top-tier gaming, featuring advanced technology and quality components.',
-            'The LG O-LED Curved TV offers an immersive viewing experience with its vibrant OLED display and sleek, curved design.',
-            'TSamsung UHD TV offers stunning 4K resolution, vibrant colors, and smart features for an immersive and high-quality viewing experience.',
-            'Samsung Galaxy S24 Ultra: Advanced camera, refined design, top-notch performance for a true flagship experience.',
-            'Sony Noise-Canceling Headphones provide premium sound with advanced noise cancellation.',
-            'The iPhone 15 Pro Max features a sleek design, an advanced triple-lens camera system, and a powerful A16 Bionic chip for enhanced performance.',
-            // Add more descriptions as needed
-          ],
           search:''
         
           
@@ -109,13 +94,20 @@
               title: 'Error',
               text: 'No matching items found.',
               icon: 'error',
-           timer: 1000
+          
             });
           }
         console.log(v);
         return v;
-      } 
+      } ,
+      sortProducts() {
+        let products = this.$store.state.products
+        if (products) {
+          products.sort((a, b) => a.amount - b.amount);
+        }
+      }
     },
+    
     
 
       
@@ -166,7 +158,7 @@
 
     .title {
       font-weight: bold;
-      font-size: 16px;
+      font-size: 13px;
       margin-bottom: 10px;
     }
 
@@ -189,12 +181,12 @@
     }
 
     button {
-      width: 100%;
-      margin-top: 15px;
+      width: 5%;
+      margin-bottom: 15px;
       background-image: linear-gradient(to right bottom, #5d0391, #7b05ae, #9b05cb, #bd00e7, #bd00e7);
       background-size: 200% 200%;
       border: none;
-      padding: 8px 10px;
+      margin-top: 1%;
       color: white;
       font-size: 14px;
       font-weight: bold;
@@ -223,19 +215,13 @@
       color: #000 !important;
     }
 
-    .group {
-      display: flex;
-      line-height: 28px;
-      align-items: center;
-      position: relative;
-      max-width: 190px;
-    }
+   
 
     .input {
       width: 22%;
       height: 40px;
       line-height: 18px;
-      padding: 0 1rem;
+      padding: 0 1em;
       padding-left: 1.5rem;
       border: 2px solid transparent;
       border-radius: 8px;
@@ -245,6 +231,7 @@
       transition: 0.3s ease;
       margin-bottom: 1%;
       margin-left: 4.5%;
+      margin-top: 1%;
     }
 
     .input::placeholder {

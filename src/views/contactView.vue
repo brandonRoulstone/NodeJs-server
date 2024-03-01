@@ -21,7 +21,7 @@
 
   <div class="section2">
     <h2 class="text-success font-weight-bold">Fill in the form</h2>
-    <form @submit.prevent="submitForm" method="post" action="https://formspree.io/f/xqkrapkr">
+    <form @submit.prevent="submitForm" method="post" action="https://formspree.io/f/mvoerlwb">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" v-model="formData.name" required>
 
@@ -63,12 +63,12 @@
     async submitForm() {
       try {
         // You can add form validation logic here if needed
-        alert('Form submitted with data:\n' + JSON.stringify(this.formData));
+        alert('Form submitted with data');
 
 
         // If you want to send an AJAX request, you can use libraries like Axios
         // Example using Axios:
-        await axios.post('https://formspree.io/f/xqkrapkr', this.formData);
+        await axios.post('https://formspree.io/f/mvoerlwb', this.formData);
 
         // Reset the form after submission
         this.formData = {

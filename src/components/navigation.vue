@@ -1,6 +1,6 @@
 <template>
-    <nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg sticky-top bg-black">
+  <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

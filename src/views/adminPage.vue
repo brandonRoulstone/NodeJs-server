@@ -1,53 +1,53 @@
 <template>
     <div>
         <navigation/>
-        <details>
-            <summary>
-                <div class="table-responsive">
-                    <div v-if="$store.state.admin.length !== 0">
-                        <table class="table table-bordered table-hover table-dark">
-                            <thead>
-                                <tr>
-                                    <th>prodName</th>
-                                    <th>quantity</th>
-                                    <th>amount</th>
-                                    <th>Category</th>
-                                    <th>img</th>
-                                    <th>edit</th>
-                                    <th>delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="item in $store.state.admin" :key="item.prodID">
-                                    <td>{{ item.prodName }}</td>
-                                    <td>{{ item.quantity }}</td>
-                                    <td>R{{ item.amount }}</td>
-                                    <td>{{ item.Category }}</td>
-                                    <td><img :src="item.prodUrl" alt="Product Image" id="image" class=" img-fluid"></td>
-                                    <td><button class="btnes" @click="updateproduct(item.prodID)">edit</button></td>
-                                    <td><button class="btnes" @click="deleteproduct(item.prodID)">delete</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div v-else>
-                 <spinners/>
-                    </div>
-                </div>
-            </summary>
-            <div>
-        <!-- <input type="number" placeholder="id" v-model="productID"> -->
-        <div>
-        <input id="input" type="text" placeholder="productname" v-model="prodName">
-        <input id="input" type="number" placeholder="quantity" v-model="quantity">
-        <input id="input" type="number" placeholder="amount" v-model="amount">
-        <input id="input" type="text" placeholder="category" v-model="Category">
-        <input id="input" type="text" placeholder="img" v-model="prodUrl">
-        <button @click="addproducts()" id="btn">add</button>
-    </div>
-    </div>
-        </details>
+        <a href="#addEdit">click here to add or edit
+          <details>
+             
+              <div id="addEdit">
+          <input id="input" type="text" placeholder="productname" v-model="prodName">
+          <input id="input" type="number" placeholder="quantity" v-model="quantity">
+          <input id="input" type="number" placeholder="amount" v-model="amount">
+          <input id="input" type="text" placeholder="category" v-model="Category">
+          <input id="input" type="text" placeholder="img" v-model="prodUrl">
+          <button @click="addproducts()" id="btn">add</button>
+      </div>
+      <summary>
+                  <div class="table-responsive">
+                      <div v-if="$store.state.admin.length !== 0">
+                          <table class="table table-bordered table-hover table-dark">
+                              <thead>
+                                  <tr>
+                                      <th>prodName</th>
+                                      <th>quantity</th>
+                                      <th>amount</th>
+                                      <th>Category</th>
+                                      <th>img</th>
+                                      <th>edit</th>
+                                      <th>delete</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr v-for="item in $store.state.admin" :key="item.prodID">
+                                      <td>{{ item.prodName }}</td>
+                                      <td>{{ item.quantity }}</td>
+                                      <td>R{{ item.amount }}</td>
+                                      <td>{{ item.Category }}</td>
+                                      <td><img :src="item.prodUrl" alt="Product Image" id="image" class=" img-fluid"></td>
+                                      <td><button class="btnes" @click="updateproduct(item.prodID)">edit</button></td>
+                                      <td><button class="btnes" @click="deleteproduct(item.prodID)">delete</button></td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+  
+                      <div v-else>
+                   <spinners/>
+                      </div>
+                  </div>
+              </summary>
+          </details>
+        </a>
 
     </div>
     <footers/>
@@ -255,6 +255,14 @@ export default {
     input[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
+    }
+    a details summary{
+     list-style: none;
+     cursor: default;
+    }
+    a{
+      text-decoration: none;
+      color: white;
     }
 
 </style>

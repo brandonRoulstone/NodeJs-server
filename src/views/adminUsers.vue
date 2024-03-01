@@ -6,11 +6,10 @@
         <table class="table table-bordered table-hover table-dark">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>name</th>
                     <th>surname</th>
-                    <th>age</th>
                     <th>gender</th>
+                    <th>age</th>
                     <th>userRole</th>
                     <th>emailAdd</th>
                     <th>userProfile</th>
@@ -21,7 +20,6 @@
             </thead>
             <tbody v-for="item in $store.state.user" :key="item.userID">
                 <tr>
-                    <td>{{item.userID}}</td>
                     <td>{{item.firstName}}</td>
                     <td>{{item.lastName}}</td>
                     <td>{{item.Gender}}</td>
@@ -162,8 +160,8 @@ export default {
             .then(() => {
       // Use SweetAlert for confirmation
       sweet({
-        title: "add?",
-        text: "You added user!",
+        title: "edit?",
+        text: "You edited user!",
         type: "success",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",

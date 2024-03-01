@@ -9,8 +9,8 @@
               <img :src="item.prodUrl" alt="" class="img img-fluid mt-5">
               <div class="card-data">
                 <p class="title" id="p">{{ item.prodName }}</p>
-                <p :id="'c'+ index" id="p">{{ descriptions[item.prodID-1] }}</p>
                 <p id="p">R{{ item.amount }}</p>
+                <p id="p">Quantity: {{ item.quantity }}</p>
                   <button class="btn">purchase</button>
             
               </div>
@@ -33,21 +33,7 @@
     },
     data() {
       return {
-        descriptions: [
-        `The JBL speaker combines compact design with powerful audio performance, making it a perfect portable companion for immersive sound on the go.`,
-        `The Volcano Bazooka unleashes explosive power with its cutting-edge design, propelling molten fury in a controlled burst to conquer any geological challenge.`,
-        `Beats headphones offer a sleek and stylish audio experience, delivering powerful bass and crisp sound quality, making them a popular choice among music enthusiasts and fashion-conscious consumers alike.`,
-        `The Xbox One Series S is a compact and powerful gaming console that delivers high-quality graphics, smooth gameplay, and a vast library of games in a digital-only format.`,
-        'The PlayStation 5 offers an immersive gaming experience with powerful hardware, stunning graphics, and innovative features for enthusiasts.',
-        'The Razer gaming laptop offers top-notch performance, impressive visuals, and a sleek design for an immersive gaming experience.',
-        'Gaming laptop with powerful AMD Ryzen 7 cpu for top-tier gaming, featuring advanced technology and quality components.',
-        'The LG O-LED Curved TV offers an immersive viewing experience with its vibrant OLED display and sleek, curved design.',
-        'TSamsung UHD TV offers stunning 4K resolution, vibrant colors, and smart features for an immersive and high-quality viewing experience.',
-        'Samsung Galaxy S24 Ultra: Advanced camera, refined design, top-notch performance for a true flagship experience.',
-        'Sony Noise-Canceling Headphones provide premium sound with advanced noise cancellation.',
-        'The iPhone 15 Pro Max features a sleek design, an advanced triple-lens camera system, and a powerful A16 Bionic chip for enhanced performance.',
-        // Add more descriptions as needed
-      ],
+     
       };
     },
     computed: {
